@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>
+    Historic Urbana Map
+  </title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Rokkitt:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/curl.css"/> <!--Must follow leaflet stylesheet! -->
+
+  <script src="src/jquery-1.11.3.min.js"></script>
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="src/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="src/slick/slick-theme.css"/>
+
+  <script type="text/javascript" src="src/slick/slick.min.js"></script>
+
+  <link rel="stylesheet" href="css/urbana.css"/> <!--Must follow leaflet stylesheet! -->
+  <script src="src/urbana.js"></script>
+
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+<nav id="header" class="sidebar navbar navbar-default">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tab-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+      </button>
+
+      <div>
+        <a href='http://urbanaillinois.us/'>
+            <img id='urbana-logo' src='img/CityofUrbana_white2.png'>
+        </a>
+        
+        <h1 id='page-title'>Historic Buildings of Urbana</h1>
+      </div>
+
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="tab-collapse-1">
+        <input id='search' class='search-ui form-control' placeholder='Search...' />
+          <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Address</a></li>
+      <li><a data-toggle="tab" href="#styles-tab">Style</a></li>
+      <li><a data-toggle="tab" href="#tours-tab">Tours</a></li>
+    </ul>
+
+    <div class="tab-content">
+        
+        <div id="home" class="tab-pane fade in active">
+            
+            <div id='listings' class='well'></div>
+            
+        </div>
+        <div id="styles-tab" class="tab-pane fade">
+          <div id='styles' class='well'></div>
+        </div>
+        <div id="tours-tab" class="tab-pane fade">
+            <div class="menu-info">
+                <strong>Tours</strong> bring story and place together, providing images and podcasts from historic sites.
+            </div>
+            <div id='tours' class='well'></div>
+        </div>
+
+        </div>
+        
+    </div> <!-- tab collapse -->
+    
+  </nav>
+<div class="dimScreen">
+</div>
+
+<!-- Modal this should go under template section --> 
+<div id="myModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content splash">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>  
+          <h2 class="modal-title">Urbana's Historic Resources Web Map</h2>
+      </div>
+      <div class="modal-body">
+          <div id='intro'>
+              <img class="splash sepia page-curl shadow-bottom" src="img/splash/courthouse1.jpg" style="width:90%;" >
+              <br>
+              <p><b>Welcome to the City of Urbana's Historic Resources web map!</b> This interactive map provides
+              information and photos for all of Urbana's local and national historic landmarks, and for 
+              each of “Urbana's 100 Most Important Buildings”. The “100 most” list was created in 2012 and was
+              based on nominations from residents who felt that each building was worthy of recognition.</p>
+              <br>
+              <p>So please, browse around the map! You're sure to learn a little bit more about many of
+              Urbana's most important and memorable historic buildings. If you have suggestions for 
+              improving the map or would like to share information or photos about a specific property, feel 
+              free to contact us at <a href="mailto:kjgarcia@urbanaillinois.us?subject=Urbana's%20Historic%20Web%20Map">kjgarcia@urbanaillinois.us</a>.
+              </p>
+              <p><b>Thanks for visiting!</b></p> 
+        </div> <!--end of intro -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- Map Canvas -->  
+  <div id="map-canvas">
+  </div>
+  
+  <!-- Hidden  Templates -->
+  <div id="templates">
+  
+  </div>
+
+</body>
+
+</html>
