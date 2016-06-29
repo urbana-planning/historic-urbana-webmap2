@@ -1,17 +1,15 @@
 /**
  * Historic Urbana Map 
- * Author: Timothy Hodson
+ * Author: Tim Hodson
+ * Date: 6/28/2016
  ******************************************************************************/   
 L.mapbox.accessToken = 
     'pk.eyJ1IjoidG9ob2Rzb24iLCJhIjoiY2llcHE3aGIwMDAwdmE1a3Q1ZzhiNTBwYiJ9.0_l-zvcvr0SrwNDwhoyl8w';
 
 
 function makeTip( feature ) {
-
-    //var title = feature.title;
-    // modal code
-    // tooltip code
-
+    // This function generates the html in the map tooltips.
+    // It returns a string that is populated with content from the feature object  
     var html = "" 
     if ( feature.properties.image ) {
         html = "<img class='sepia page-curl shadow-bottom' src=" + feature.properties.image + ">";
@@ -35,6 +33,10 @@ function makeTip( feature ) {
 
 
 function updateModal(feature) {
+    // This function populates the modal pane wih content loaded from the feature object, as well as an associated modal file
+
+    // check whether the feature has a modal
+    // this could be improved so that it actually checks for the existance of a modal file with the name specified in feature.id
     if (feature.properties.modal != 'y') {
         return;
     }
@@ -43,6 +45,8 @@ function updateModal(feature) {
         $('#myModal .modal-title').prepend(feature.properties.title + ', ');
     }
     $('#myModal .modal-body').load('modals/' + feature.properties.id, function() {
+        
+        // controls the image carousel in the modal
         $('.slider').slick({
              dots: true,
              lazyLoad: 'ondemand',
@@ -58,53 +62,22 @@ function updateModal(feature) {
     $(".modal-body").css('height', bodyheight*0.7);
 }
 
+// When a feature is clicked on the map, call update modal. This preloads the modal contents incase the user desides to access it from the tooltip.
 function onEachFeature( feature, layer) {
     layer.on({
         click: updateModal
     });
 }
-//XXX delete this
-var buildingIcon = L.divIcon({
-                        'className': 'map-icon',
-                        "html": "&#9733;",
-                        'iconSize': 'null'
-                        //'marker-symbol': 'building',
-                    });
-var buildingIcon = L.mapbox.marker.icon({
-                        'marker-symbol': 'building',
-                        'marker-color': '#ff3333',
-                        'marker-size': 'small'
-                    });
-var publicIcon = L.mapbox.marker.icon({
-                        'marker-symbol': 'town-hall',
-                        'marker-color': '#ff3333',
-                        'marker-size': 'small'
-                    });
-var churchIcon = L.mapbox.marker.icon({
-                        'marker-symbol': 'religious-christian',
-                        'marker-color': '#ff3333',
-                        'marker-size': 'small'
-                    });
-var commercialIcon = L.mapbox.marker.icon({
-                        'marker-symbol': 'commercial',
-                        'marker-color': '#ff3333',
-                        'marker-size': 'small'
-                    });
-var monumentIcon = L.mapbox.marker.icon({
-                        'marker-symbol': 'monument',
-                        'marker-color': '#ff3333',
-                        'marker-size': 'small'
-                    });
 
 
 
 
-
-
+// method that capitializes a string
 String.prototype.capitalize = function(){
        return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
       };
 
+// generates property listings in the main menu
 function genListings(map,featureLayer) {
         var listings = $('#listings');
         listings.empty();
@@ -130,6 +103,8 @@ function genListings(map,featureLayer) {
         });
         
     }
+
+// generates style and tour checkboxes in the main menu
 function genChecks(featureLayer) {
     $('#tours').empty();
     $('#styles').empty();
@@ -164,6 +139,7 @@ function genChecks(featureLayer) {
                         "<label for='" + styleID + "'>"+ prop.style + "</label>");
         }
     });
+
     // sort styles in alphabetical order
     $('#styles .style').sort(function(a,b) { 
         la = $(a).find('input').attr('id');
@@ -171,28 +147,60 @@ function genChecks(featureLayer) {
         return la.localeCompare(lb)
     }).appendTo('#styles');
 
-    // XXX append target=_blank to each style link so that it opens in a new window
-    // XXX remove this if styles are migrated to local modal
+    // append target=_blank to each style link so that it opens in a new window
     $('.style,.tour').each(function () {
                 $(this).find('a').attr('target','_blank');
     });
 }
+
+// defines the bounds of the map
 var southWest = L.latLng(40.08, -88.25),
     northEast = L.latLng(40.14, -88.17),
     bounds = L.latLngBounds(southWest, northEast);
+
+
+// these objects specify the various map markers.
+var buildingIcon = L.mapbox.marker.icon({
+                        'marker-symbol': 'building',
+                        'marker-color': '#ff3333',
+                        'marker-size': 'small'
+                    });
+var publicIcon = L.mapbox.marker.icon({
+                        'marker-symbol': 'town-hall',
+                        'marker-color': '#ff3333',
+                        'marker-size': 'small'
+                    });
+var churchIcon = L.mapbox.marker.icon({
+                        'marker-symbol': 'religious-christian',
+                        'marker-color': '#ff3333',
+                        'marker-size': 'small'
+                    });
+var commercialIcon = L.mapbox.marker.icon({
+                        'marker-symbol': 'commercial',
+                        'marker-color': '#ff3333',
+                        'marker-size': 'small'
+                    });
+var monumentIcon = L.mapbox.marker.icon({
+                        'marker-symbol': 'monument',
+                        'marker-color': '#ff3333',
+                        'marker-size': 'small'
+                    });
+
+
+
 /******************************************************************************/   
-/*windowon () {*/
+// this function runs when the page has finished loading
 $(document).ready( function () {
     $('#myModal').modal('show');
-    //$(".modal-body").css('height', 300);
-
+    
     if (window.location.protocol=="file:") {alert("must load page via http");}
+    
+    // mapbox access token
     L.mapbox.accessToken = 
     'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnbXFneXl6MDAyeG5ra29nNDR1NzhlMyJ9.LnLnxgCECdz936gdFy_ttg';
+    
+    // object controls the mapbox basemap
     var map = L.mapbox.map('map-canvas', 'city-of-urbana.c3f23b22', {
-    // other basemaps
-    // 'tohodson.55f8ddb6'
-    // 'city-of-urbana.c3f23b22'
         zoom: 15,
 	    center: [40.1097, -88.2042],
         minZoom: 15,
@@ -200,14 +208,18 @@ $(document).ready( function () {
         maxBounds: bounds,
     });
     var defaultBounds = map.getBounds();
+
+    // loads the contents of historic_places.geojson
     var featureLayer = L.mapbox.featureLayer()
         .loadURL('historic_places.geojson')
         .addTo(map);
-
+    
+    // this call is triggered by the previous function and is called for each feature in the feature layer
     featureLayer.on('layeradd', function(e) {
         var marker = e.layer,
         feature = marker.feature;
-
+        
+        // set the map marker of the feature
         switch(feature.properties.category) {
             case 'house':
                 marker.setIcon(buildingIcon);
@@ -225,23 +237,27 @@ $(document).ready( function () {
                 marker.setIcon(monumentIcon);
                 break;
         }  
-         
+        
+        // generate the tooltip
         var content = makeTip(feature); 
         marker.bindPopup(content);
     });
-
+    
+    // call search() each time a key is entered into the searchbar. This updates the search results as the user types. 
     $('#search').keyup( function () {
         search();
         $('.filter').removeAttr('checked') 
     });
-
+    
+    // when a feature is clicked, update the contents of the modal to match the selected feature
     featureLayer.on('click', function(e) {
 
         var feature = e.layer.feature;
         updateModal(feature);
 
     });
-
+    
+    // once the feature is loaded, populate the main menu with property listings, etc
     featureLayer.on('ready', function() {
 
         genChecks(featureLayer);
@@ -263,9 +279,6 @@ function search(string) {
     featureLayer.setFilter(searchTitle)
     genListings(map,featureLayer);
     
-    //if (( bounds = featureLayer.getBounds()).isValid()) {// if bounds exist
-    //    map.fitBounds(bounds); 
-    ///}
     map.fitBounds(defaultBounds);
     genChecks(featureLayer); 
     // here we're simply comparing the 'state' property of each marker
@@ -282,7 +295,7 @@ function search(string) {
 
 
 function checked() {
-    // the following code is redundant with previous and should be merged
+    // the following code is kludgy, redundant with previous and should be refactored
     var searchString = $('#search').val()
                                    .toLowerCase()
                                    .replace(/\./g,"");
@@ -344,7 +357,7 @@ map.on({
     'click'     : tabCollapse
 });
 
-// when popups open pan the map as to not cut them off
+// when tooltips open, pan the map as to not cut them off
 map.on('popupopen', function(e) {
         var px = map.project(e.popup._latlng); // find the pixel location on the map where the popup anchor is
             px.y -= e.popup._container.clientHeight/2 + 100 // 100 is testing XXX 
@@ -352,18 +365,14 @@ map.on('popupopen', function(e) {
         map.panTo(map.unproject(px),{animate: true}); // pan to new center
 });
 
-// NOT DONE XXX
-
-$('.architect').click(function() {
-
-});
 
 // this block is not working XXX
-$('.filter').click(function() {
-    if(this.checked == true) {
-        this.checked = false;
-    }
-});
+//$('.filter').click(function() {
+//    if(this.checked == true) {
+//        this.checked = false;
+//    }
+//});
+
 // turn off audio when modal closes
 $('#myModal').on('hidden.bs.modal', function () {
     var audioPlayer = $('audio')[0];
