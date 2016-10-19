@@ -6,7 +6,6 @@
 L.mapbox.accessToken = 
     'pk.eyJ1IjoidG9ob2Rzb24iLCJhIjoiY2llcHE3aGIwMDAwdmE1a3Q1ZzhiNTBwYiJ9.0_l-zvcvr0SrwNDwhoyl8w';
 
-
 function makeTip( feature ) {
     // This function generates the html in the map tooltips.
     // It returns a string that is populated with content from the feature object  
@@ -186,6 +185,9 @@ var monumentIcon = L.mapbox.marker.icon({
                         'marker-size': 'small'
                     });
 
+
+ // This function makes all html links open in new tabs.
+function externalLinks() {   for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {     var b = c[a];     b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")   } } ; externalLinks(); 
 
 
 /******************************************************************************/   
