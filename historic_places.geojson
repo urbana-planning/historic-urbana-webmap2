@@ -1,4 +1,4 @@
-﻿{
+  {
    "type": "FeatureCollection",
    "features": [
   {
@@ -349,7 +349,7 @@
     "address":"701 N. Coler",
     "title":"Sears Osborn House",
     "image":"historic_img/medium/coler-n-701.jpg",
-    "style":"<a href=\"http://urbanaillinois.us/residents/historic-urbana/100-most-significant-buildings/architectural-styles/mission\" target=\"_blank\">Mission</a>",
+    "style":"<a href=\"http://urbanaillinois.us/residents/historic-urbana/100-most-significant-buildings/architectural-styles/craftsman\" target=\"_blank\">Craftsman</a>",
     "built":"1920",
     "architect":"Unknown",
     "podcast":"",
