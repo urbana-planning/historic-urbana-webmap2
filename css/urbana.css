@@ -206,12 +206,12 @@ table #tooltip {
 .tooltip-footer {
     border-top: thin solid #A5BC96;
 }
-.sepia 
+/*.sepia 
 {
     -webkit-filter:sepia(0.4) saturate(2.5) hue-rotate(-30deg) contrast(0.67);
       -filter:sepia(0.4) saturate(2.5) hue-rotate(-30deg) contrast(0.67);
     -webkit-transform: rotate(1deg); /* Chrome, Safari, Opera */
-    transform: rotate(1deg);
+/*    transform: rotate(1deg);
 }
 
 .sepia:hover
@@ -221,7 +221,7 @@ table #tooltip {
     -moz-filter: sepia(0);
     -o-filter: sepia(0);
     -ms-filter: sepia(0);
-}
+} */
 section::-webkit-scrollbar { width: 0 !important }
 
 section.active
