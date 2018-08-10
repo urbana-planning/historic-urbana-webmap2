@@ -4,7 +4,7 @@
  * Date: 6/28/2016
  ******************************************************************************/   
 L.mapbox.accessToken = 
-    'pk.eyJ1IjoidG9ob2Rzb24iLCJhIjoiY2llcHE3aGIwMDAwdmE1a3Q1ZzhiNTBwYiJ9.0_l-zvcvr0SrwNDwhoyl8w';
+    'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
 
 function makeTip( feature ) {
     // This function generates the html in the map tooltips.
