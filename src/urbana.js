@@ -195,7 +195,7 @@ $(document).ready( function () {
     
     // mapbox access token
     L.mapbox.accessToken = 
-    'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnbXFneXl6MDAyeG5ra29nNDR1NzhlMyJ9.LnLnxgCECdz936gdFy_ttg';
+    'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
     
     // object controls the mapbox basemap
     var map = L.mapbox.map('map-canvas', 'city-of-urbana.c3f23b22', {
