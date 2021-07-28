@@ -198,21 +198,13 @@ $(document).ready( function () {
     'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
     
     // object controls the mapbox basemap
-    /*var map = L.mapbox.map('map-canvas', {
-        tileSize: 512,
-	zoom: 15,
+    var map = L.mapbox.map('map-canvas', 'city-of-urbana.c3f23b22', {
+        zoom: 15,
 	    center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
-	zoomOffset: -1,
         maxBounds: bounds,
-    });*/
-	
-    //Testing based on Mapbox documentation	
-    var map = L.mapbox.map('map')
-	.setView([40.1097, -88.2042], 15)
-	.addLayer(L.mapbox.styleLayer('mapbox://styles/city-of-urbana/cjzycnpg82k8s1cr4529hjuwi'));	
-	
+    });
     var defaultBounds = map.getBounds();
 
     // loads the contents of historic_places.geojson
