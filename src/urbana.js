@@ -198,8 +198,10 @@ $(document).ready( function () {
     'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
     
     // object controls the mapbox basemap
-    var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
-        zoom: 15,
+    //var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
+    //testing just using ('map')
+    var map = L.mapbox.map('map') {	
+	zoom: 15,
 	    center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
