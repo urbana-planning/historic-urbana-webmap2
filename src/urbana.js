@@ -194,7 +194,7 @@ $(document).ready( function () {
     if (window.location.protocol=="file:") {alert("must load page via http");}
     
     // mapbox access token
-    L.mapbox.accessToken = 
+    /*L.mapbox.accessToken = 
     'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
     
     // object controls the mapbox basemap
@@ -204,7 +204,15 @@ $(document).ready( function () {
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
-    });
+    });*/
+
+	//testing new mapboxjs code to get basemap
+    L.mapbox.accessToken = 'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
+    var map = L.mapbox.map('map')
+    	.setView([40.1097, -88.2042], 15);
+    
+	L.mapbox.styleLayer('mapbox://styles/examples/cji3d7gpt1i8m2rn7l7w0vl99').addTo(map);
+	
     var defaultBounds = map.getBounds();
 
     // loads the contents of historic_places.geojson
