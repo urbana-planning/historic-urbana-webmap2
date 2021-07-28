@@ -213,7 +213,7 @@ $(document).ready( function () {
     
 	L.mapbox.styleLayer('mapbox://styles/examples/cji3d7gpt1i8m2rn7l7w0vl99').addTo(map);
 	
-    var defaultBounds = map.getBounds();
+    //var defaultBounds = map.getBounds();
 
     // loads the contents of historic_places.geojson
     var featureLayer = L.mapbox.featureLayer()
