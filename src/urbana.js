@@ -208,7 +208,7 @@ $(document).ready( function () {
 
 	//testing new mapboxjs code to get basemap
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
-    var map = L.mapbox.map('map')
+    var map = L.mapbox.map('map-canvas')
     	.setView([40.1097, -88.2042], 15);
     
 	L.mapbox.styleLayer('mapbox://styles/examples/cji3d7gpt1i8m2rn7l7w0vl99').addTo(map);
