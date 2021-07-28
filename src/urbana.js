@@ -201,8 +201,9 @@ $(document).ready( function () {
     //var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
     //testing just using ('map')
     var map = L.mapbox.map('map') {	
+	style: 'mapbox://styles/city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', //new urbana historic style
 	zoom: 15,
-	    center: [40.1097, -88.2042],
+	center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
