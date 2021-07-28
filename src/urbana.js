@@ -200,15 +200,18 @@ $(document).ready( function () {
     // object controls the mapbox basemap
     //var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
     //testing just using ('map')
-    var map = L.mapbox.map('map-canvas') {	
-	style: 'mapbox://styles/city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', //new urbana historic style
+    /*var map = L.mapbox.map('map-canvas') {	
 	zoom: 15,
 	center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
-    });
+    });*/
 
+    var map = L.mapbox.map('map')
+    .setView([40.1097, -88.2042], 15)
+    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+	
 	//testing new mapboxjs code to get basemap
 /*
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
