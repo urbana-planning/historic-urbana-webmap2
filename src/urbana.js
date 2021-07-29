@@ -195,26 +195,16 @@ $(document).ready( function () {
     
     // mapbox access token
     L.mapbox.accessToken = 
-    'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
+    'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnbXFneXl6MDAyeG5ra29nNDR1NzhlMyJ9.LnLnxgCECdz936gdFy_ttg';
     
     // object controls the mapbox basemap
-    var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
-	zoom: 15,
-	center: [40.1097, -88.2042],
+    var map = L.mapbox.map('map-canvas', 'city-of-urbana.c3f23b22', {
+        zoom: 15,
+	    center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
     });
-
-//testing new mapboxjs code to get basemap
-/*
-    L.mapbox.accessToken = 'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnZHJ2NHptMnJxcnVsbTdwZWFza25ubyJ9.MhV_KJ6DFtgXFjd-4OvgQQ';
-    var map = L.mapbox.map('map')
-    	.setView([40.1097, -88.2042], 15);
-    
-	L.mapbox.styleLayer('mapbox://styles/city-of-urbana/cjzycnpg82k8s1cr4529hjuwi').addTo(map);
-	*/
-	
     var defaultBounds = map.getBounds();
 
     // loads the contents of historic_places.geojson
