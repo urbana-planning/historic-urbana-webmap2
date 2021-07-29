@@ -200,17 +200,16 @@ $(document).ready( function () {
     // object controls the mapbox basemap
     //var map = L.mapbox.map('map-canvas', 'city-of-urbana/cjzycnpg82k8s1cr4529hjuwi', {
     //testing just using ('map')
-    /*var map = L.mapbox.map('map-canvas') {	
+    var map = L.mapbox.map('map-canvas') {	
 	zoom: 15,
 	center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
-    });*/
+    });
 
-    var map = L.mapbox.map('map')
-    .setView([40.1097, -88.2042], 15)
-    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+    var styleLayer = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11')
+    	.addTo(map);
 	
 	//testing new mapboxjs code to get basemap
 /*
