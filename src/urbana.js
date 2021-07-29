@@ -198,7 +198,7 @@ $(document).ready( function () {
     'pk.eyJ1IjoiY2l0eS1vZi11cmJhbmEiLCJhIjoiY2lnbXFneXl6MDAyeG5ra29nNDR1NzhlMyJ9.LnLnxgCECdz936gdFy_ttg';
     
     // object controls the mapbox basemap
-    var map = L.mapbox.map('map-canvas', 'city-of-urbana.c3f23b22', {
+    var map = L.mapbox.map('map-canvas', {
         zoom: 15,
 	    center: [40.1097, -88.2042],
         minZoom: 15,
@@ -207,6 +207,8 @@ $(document).ready( function () {
     });
     var defaultBounds = map.getBounds();
 
+//Trying to add style layer directly.
+	
     // loads the contents of historic_places.geojson
     var featureLayer = L.mapbox.featureLayer()
         .loadURL('historic_places.geojson')
