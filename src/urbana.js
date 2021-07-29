@@ -199,8 +199,9 @@ $(document).ready( function () {
     
     // object controls the mapbox basemap
     var map = L.mapbox.map('map-canvas', {
-        zoom: 15,
-	    center: [40.1097, -88.2042],
+        style: 'mapbox://styles/mapbox/satellite-v9', // style URL TEST
+	zoom: 15,
+	center: [40.1097, -88.2042],
         minZoom: 15,
         maxZoom: 18,
         maxBounds: bounds,
